@@ -14,11 +14,21 @@
               <form enctype="multipart/form-data" action="upload.php" method="POST">
                 <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-                Author <input type="text" name="author" value=""/>
-                Title <input type="text" name="title" value=""/>
+                Author <input type="text" name="author"/>
+
+                Title <input type="text" name="title"/>
                 </br>
-                Description <input type="text" name="author" value=""/>
-                Gengre <input type="text" name="author" value=""/>
+                Description <input type="text" name="description"/>
+
+                genre <select name="genre"/>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Action">Action</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Love">Love</option>
+                  <option value="Mistery">Mistery</option>
+                  <option value="Scifi">Scifi</option>
+                </select>
+
                 </br>
                 Upload file: <input name="user_file" type="file" />
                 </br>
@@ -26,10 +36,6 @@
               </div>
             </div>
         <?php } else {
-          $database   = $user = $password = "project";
-          $host       = "mysql";
-          $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
-
           $id = sha1_file($_FILES['user_file']['tmp_name']);
 
           try {
@@ -66,12 +72,17 @@
           $author = $_POST['author'];
           $title = $_POST['title'];
           $description = $_POST['description'];
-          $gengre = $_POST['gengre'];
+          $genre = $_POST['genre'];
 
-          $query = $connection->query("INSERT INTO life
-            (id, author, description, gengre) VALUES
-            ('$id', '$author', '$description','$gengre')");
+          $database   = $user = $password = "project";
+          $host       = "mysql";
+          $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
 
+          $stm = $connection->prepare("INSERT INTO stories
+            (id, author, title, description, genre) VALUES
+            (?, ?, ?, ?, ?)");
+
+          if( $stm->execute(array($id,$author,$title,$description,$genre))){
         ?>
         <div class="container">
           <div class="row">
@@ -81,6 +92,9 @@
           </div>
         </div>
         <?php
+          } else {
+            echo 'bad';
+          }
             } catch (RuntimeException $e) {
 
                 echo $e->getMessage();

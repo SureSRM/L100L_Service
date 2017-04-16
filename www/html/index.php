@@ -14,24 +14,28 @@
         <div class="row">
           <ul class="list-group">
           <?php
-            $path = '/var/www/html/life';
-            $files = array_diff(scandir($path), array('.', '..'));
-            $url =  "//{$_SERVER['HTTP_HOST']}";
-            foreach ( $files as $key => $value ) {
+          $database   = $user = $password = "project";
+          $host       = "mysql";
+          $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
+          $stm        = $connection->prepare("SELECT * FROM stories");
+          $stm->execute();
+
+          foreach ( $stm->fetchAll() as $story ) {
           ?>
             <li class="list-group-item">
 
               <div class="media">
                 <div class="media-left">
-                  <img src="img_avatar1.png" class="media-object" style="width:60px">
+                  <img src="pics/<?= $story['genre']?>.png" class="media-object" style="width:60px">
                 </div>
                 <div class="media-body">
                   <h3 class="media-heading">
-                    <a href='life/<?= $value ?>'>
-                      <?= $value ?>
+                    <a href='life/<?= $story['id'] ?>'>
+                      <?= $story['title'] ?>
                     </a>
+                    <small> by <?= $story['author'] ?> </small>
                   </h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p><?= $story['description'] ?></p>
                 </div>
               </div>
             </li>

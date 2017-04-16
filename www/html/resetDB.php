@@ -13,12 +13,13 @@
         $database   = $user = $password = "project";
         $host       = "mysql";
         $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
-        $query      = $connection->query("CREATE TABLE IF NOT EXISTS stories (
-            id          VARCHAR(30),
+        $query      = $connection->query("DROP TABLE IF EXISTS stories");
+        $query      = $connection->query("CREATE TABLE stories (
+            id          VARCHAR(45),
             author      VARCHAR(50),
-            description TEXT,
-            gengre      VARCHAR(30),
-            date          TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            title       VARCHAR(50),
+            description VARCHAR(300),
+            genre      VARCHAR(30)
           )");
 
         $query      = $connection->query("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'");
