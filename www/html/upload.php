@@ -37,7 +37,7 @@
             </div>
         <?php } else {
           $id = sha1_file($_FILES['user_file']['tmp_name']);
-
+          $id = $id.".json";
           try {
             if (
                 !isset($_FILES['user_file']['error']) ||
@@ -56,7 +56,6 @@
                 default:
                     throw new RuntimeException('Unknown errors.');
             }
-
             if ($_FILES['upfile']['size'] > 1000000) {
                 throw new RuntimeException('Exceeded filesize limit.');
             }
@@ -74,15 +73,13 @@
           $description = $_POST['description'];
           $genre = $_POST['genre'];
 
-          $database   = $user = $password = "project";
-          $host       = "mysql";
-          $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
+          include 'db.php';
 
           $stm = $connection->prepare("INSERT INTO stories
             (id, author, title, description, genre) VALUES
             (?, ?, ?, ?, ?)");
-
           if( $stm->execute(array($id,$author,$title,$description,$genre))){
+
         ?>
         <div class="container">
           <div class="row">

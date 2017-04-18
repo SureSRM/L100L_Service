@@ -10,9 +10,8 @@
         <div class="row">
 
         <?php
-        $database   = $user = $password = "project";
-        $host       = "mysql";
-        $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
+
+        include 'db.php';
         $query      = $connection->query("DROP TABLE IF EXISTS stories");
         $query      = $connection->query("CREATE TABLE stories (
             id          VARCHAR(45),
