@@ -30,36 +30,46 @@
       )) {
           throw new RuntimeException('Failed to move uploaded file.');
       }
-    $author = $_SESSION['login_user'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $genre = $_POST['genre'];
+      $author = $_SESSION['login_user'];
+      $title = $_POST['title'];
+      $description = $_POST['description'];
+      $genre = $_POST['genre'];
 
-    include("config_conection.php");
-    $stm = $connection->prepare("INSERT INTO stories
-      (id, author, title, description, genre) VALUES
-      (?, ?, ?, ?, ?)");
+      include("config_conection.php");
+      $stm = $connection->prepare("INSERT INTO stories
+        (id, author, title, description, genre) VALUES
+        (?, ?, ?, ?, ?)");
 
-    if( $stm->execute(array($id,$author,$title,$description,$genre))){
+      if( $stm->execute(array($id,$author,$title,$description,$genre))){
 ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Upload</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
       <div class="container">
-      <div class="row">
+        <div class="row">
         <h1> Your story was uploaded!</h1>
         <h1> Share it: </br> </h1>
         <code> <?php echo "{$_SERVER['HTTP_HOST']}/story/{$id}" ?> </code>
+        </div>
       </div>
-      </div>
+    </body>
+</html>
 <?php
-    } else {
-      echo 'bad';
-    }
-      } catch (RuntimeException $e) {
-
-          echo $e->getMessage();
-
+      } else {
+        echo 'bad';
       }
-      die();
+    } catch (RuntimeException $e) {
+
+        echo $e->getMessage();
+
     }
+    die();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
