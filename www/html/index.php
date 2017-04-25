@@ -9,6 +9,7 @@
       <div class="jumbotron text-center">
         <h1> Live 100 lifes </h1>
         <p>New adventures are waiting for you!</p>
+        <input type="button" class="btn btn-info" value="Upload yours" onclick="location.href = '/upload.php';">
       </div>
       <div class="container">
         <div class="row">
@@ -28,7 +29,7 @@
                 </div>
                 <div class="media-body">
                   <h3 class="media-heading">
-                    <a href='life/<?= $story['id'] ?>'>
+                    <a href='story/<?= $story['id'] ?>'>
                       <?= $story['title'] ?>
                     </a>
                     <small> by <?= $story['author'] ?> </small>

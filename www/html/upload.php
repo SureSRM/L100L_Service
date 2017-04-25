@@ -25,7 +25,7 @@
       }
       if (!move_uploaded_file(
           $_FILES['user_file']['tmp_name'],
-          sprintf('life/%s', $id
+          sprintf('story/%s', $id
           )
       )) {
           throw new RuntimeException('Failed to move uploaded file.');
@@ -46,7 +46,7 @@
       <div class="row">
         <h1> Your story was uploaded!</h1>
         <h1> Share it: </br> </h1>
-        <code> <?php echo "{$_SERVER['HTTP_HOST']}/life/{$id}" ?> </code>
+        <code> <?php echo "{$_SERVER['HTTP_HOST']}/story/{$id}" ?> </code>
       </div>
       </div>
 <?php
@@ -71,28 +71,39 @@
     <body>
           <div class="container">
             <div class="row">
-              <h1> Upload your life </h1>
+              <h1> Upload your story </h1>
 
-              <form enctype="multipart/form-data" action="upload.php" method="POST">
+              <form enctype="multipart/form-data" action="upload.php" method="POST" class="form-horizontal">
                 <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-                Title <input type="text" name="title"/>
-                </br>
-                Description <input type="text" name="description"/>
-
-                genre <select name="genre"/>
-                  <option value="Adventure">Adventure</option>
-                  <option value="Action">Action</option>
-                  <option value="Drama">Drama</option>
-                  <option value="Love">Love</option>
-                  <option value="Mistery">Mistery</option>
-                  <option value="Scifi">Scifi</option>
-                </select>
-
-                </br>
-                Upload file: <input name="user_file" type="file" />
-                </br>
-                <input type="submit" name="submit_button" value="Enviar"/>
+                <div class="form-group">
+                  <label for=title class="control-label" >Title:</label>
+                  <input type="text" name="title" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label for=description class="control-label" >Description:</label>
+                  <input type="text" name="description" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label for=genre class="control-label" >Genre:</label>
+                  <select class="form-control" name="genre" class="form-control"/>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Action">Action</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Love">Love</option>
+                    <option value="Mistery">Mistery</option>
+                    <option value="Scifi">Scifi</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for=user_file class="control-label" >Upload file:</label>
+                  <input name="user_file" type="file" class="file"/>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="submit" value="Upload" class="btn btn-default"
+                      data-show-preview="false"/>
+                </div>
+                </form>
               </div>
             </div>
     </body>
