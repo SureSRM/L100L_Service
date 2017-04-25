@@ -14,9 +14,7 @@
         <div class="row">
           <ul class="list-group">
           <?php
-          $database   = $user = $password = "project";
-          $host       = "mysql";
-          $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
+          include("config_conection.php");
           $stm        = $connection->prepare("SELECT * FROM stories");
           $stm->execute();
 

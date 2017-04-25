@@ -10,9 +10,7 @@
         <div class="row">
 
         <?php
-        $database   = $user = $password = "project";
-        $host       = "mysql";
-        $connection = new PDO("mysql:host={$host};dbname={$database};charset=utf8", $user, $password);
+        include("config_conection.php");
         $query      = $connection->query("DROP TABLE IF EXISTS stories");
         $query      = $connection->query("CREATE TABLE stories (
             id          VARCHAR(45),
@@ -21,6 +19,12 @@
             description VARCHAR(300),
             genre      VARCHAR(30)
           )");
+        $query      = $connection->query("DROP TABLE IF EXISTS users");
+        $query      = $connection->query("CREATE TABLE users (
+            username          VARCHAR(45),
+            password      VARCHAR(50)
+          )");
+        $query      = $connection->query("INSERT INTO users (username, password) VALUES ('test','pass1234')");
 
         $query      = $connection->query("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE='BASE TABLE'");
         $tables     = $query->fetchAll(PDO::FETCH_COLUMN);
