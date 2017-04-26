@@ -9,7 +9,7 @@
       <div class="jumbotron text-center">
         <h1> Live 100 lifes </h1>
         <p>New adventures are waiting for you!</p>
-        <input type="button" class="btn btn-info" value="Upload yours" onclick="location.href = '/upload.php';">
+        <input type="button" class="btn btn-info" value="Upload yours" onclick="location.href = 'upload.php';">
       </div>
       <div class="container">
         <div class="row">
