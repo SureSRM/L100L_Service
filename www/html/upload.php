@@ -42,12 +42,12 @@
 
       if( $stm->execute(array($id,$author,$title,$description,$genre))){
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <title>Upload</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
     </head>
     <body>
       <div class="container">
@@ -71,30 +71,30 @@
     die();
   }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <title>Upload</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
     </head>
     <body>
-          <div class="container">
-            <div class="row">
-              <h1> Upload your story </h1>
-
+      <div class="custom-upload-background">
+        <div class="container custom-form">
+          <div class="row">
+            <div class="login-form">
               <form enctype="multipart/form-data" action="upload.php" method="POST" class="form-horizontal">
                 <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-
-                <div class="form-group">
+                <h1 class="custom-font"> Upload your story </h1>
+                <div class="form-group row">
                   <label for=title class="control-label" >Title:</label>
                   <input type="text" name="title" class="form-control"/>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                   <label for=description class="control-label" >Description:</label>
                   <input type="text" name="description" class="form-control"/>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                   <label for=genre class="control-label" >Genre:</label>
                   <select class="form-control" name="genre" class="form-control"/>
                     <option value="Adventure">Adventure</option>
@@ -105,16 +105,19 @@
                     <option value="Scifi">Scifi</option>
                   </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                   <label for=user_file class="control-label" >Upload file:</label>
                   <input name="user_file" type="file" class="file"/>
                 </div>
-                <div class="form-group">
-                  <input type="submit" name="submit" value="Upload" class="btn btn-default"
+                <div class="form-group row">
+                  <input type="submit" name="submit" value="Upload"
+                      class="btn btn-lg btn-primary btn-block"
                       data-show-preview="false"/>
                 </div>
                 </form>
               </div>
             </div>
+          </div>
+        </div>
     </body>
 </html>

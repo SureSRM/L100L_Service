@@ -22,27 +22,32 @@
    <head>
       <meta charset="utf-8">
       <title>Login Page</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="css/custom.css">
    </head>
    <body>
-     <div class="container">
-       <div class="row">
-         <h1>Login</h1>
-         <form action = "" method = "POST" class="form-horizontal">
-           <div class="form-group">
-             <label for=user class="control-label" >User name:</label>
-             <input type = "text" name="user" class="form-control"/>
-           </div>
-           <div class="form-group">
-            <label for=password class="control-label">Password:</label>
-            <input type = "password" name = "password" class="form-control"/>
+     <div class="custom-login-background">
+       <div class="container custom-form">
+         <div class="row">
+             <div class="login-form">
+               <h1 class="custom-font">Login</h1>
+               <form action = "" method = "POST" class="form-horizontal">
+                 <div class="form-group row">
+                   <label for=user class="control-label" >User name:</label>
+                   <input type = "text" name="user" class="form-control"/>
+                 </div>
+                 <div class="form-group row">
+                  <label for=password class="control-label">Password:</label>
+                  <input type = "password" name = "password" class="form-control"/>
+                </div>
+                <div class="form-group row">
+                  <input type = "submit" value = "Submit"
+                      class="btn btn-lg btn-primary btn-block"/><br />
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="form-group">
-            <input type = "submit" value = "Submit" class="btn btn-default"/><br />
-          </div>
-         </form>
-
-         </div>
+        </div>
       </div>
    </body>
 </html>

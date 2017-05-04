@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'corporative-font'; /*a name to be used later*/
+    src: url('/font/tox.ttf'); /*URL to font*/
+}
+.custom-font{
+  font-family: 'corporative-font';
+  color: white;
+  text-shadow: 4px 4px 5px black;
+  background: none;
+}
+
+.custom-banner-background{
+  background-image: url('/pics/waneella_yellow.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 1024px){
+  h1.custom-banner{
+    font-size: 13vw;
+  }
+  h2.custom-banner{
+    font-size: 4vw;
+  }
+}
+@media (min-width: 1024px){
+  h1.custom-banner{
+    font-size: 5vw;
+  }
+  h2.custom-banner{
+    font-size: 2vw;
+  }
+}
+
+.custom-login-background{
+  height:100%;
+  width: 100%;
+  background:url('/pics/waneella_cream.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-form{
+  color: white;
+  text-shadow: 3px 3px 4px black;
+  background: none;
+  max-width: 40%;
+}
+
+.custom-upload-background{
+  height:100%;
+  width: 100%;
+  background:url('/pics/waneella_pink.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
