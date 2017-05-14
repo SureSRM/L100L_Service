@@ -33,6 +33,13 @@
   }
 }
 
+.custom-user-background{
+  background:url('/pics/waneella_green.gif');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .custom-login-background{
   height:100%;
   width: 100%;
