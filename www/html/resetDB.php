@@ -20,6 +20,12 @@
             description VARCHAR(300),
             genre      VARCHAR(30)
           )");
+        $query      = $connection->query("DROP TABLE IF EXISTS likes");
+        $query      = $connection->query("CREATE TABLE likes (
+            id          VARCHAR(45),
+            username      VARCHAR(45),
+            CONSTRAINT PK_Like PRIMARY KEY (id,username)
+          )");
         $query      = $connection->query("DROP TABLE IF EXISTS users");
         $query      = $connection->query("CREATE TABLE users (
             username          VARCHAR(45),

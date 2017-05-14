@@ -11,6 +11,7 @@
         </a>
         <small> by <a href='user.php?user=<?= $story['author'] ?>'><?= $story['author'] ?></a>
         </small>
+        <a href='like.php?story_id=<?=$story['id']?>&username=<?=$_SESSION['login_user']?>'> like it! </a>
 
       </h3>
       <p><?= $story['description'] ?></p>
