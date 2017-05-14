@@ -57,10 +57,12 @@
           include("config_conection.php");
 
           if(isset($_GET['filter'])){
-            $stm        = $connection->prepare("SELECT * FROM stories where genre=?");
+            $stm        = $connection->prepare("SELECT s.id, s.author, s.title, s.description, s.genre, COUNT(l.id) AS like_count FROM stories AS s JOIN likes AS l on l.id = s.id
+                                                WHERE s.genre=? GROUP BY s.id, s.author, s.title, s.description, s.genre ORDER BY like_count DESC");
             $stm->execute(array($_GET['filter']));
           } else {
-            $stm        = $connection->prepare("SELECT * FROM stories");
+            $stm        = $connection->prepare("SELECT s.id, s.author, s.title, s.description, s.genre, COUNT(l.id) AS like_count FROM stories AS s JOIN likes AS l on l.id = s.id
+                                                GROUP BY s.id, s.author, s.title, s.description, s.genre ORDER BY like_count DESC");
           }
 
           $stm->execute();
