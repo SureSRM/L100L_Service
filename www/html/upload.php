@@ -38,9 +38,9 @@
       include("config_conection.php");
       $stm = $connection->prepare("INSERT INTO stories
         (id, author, title, description, genre) VALUES
-        (?, ?, ?, ?, ?)");
+        (?, ?, ?, ?, ?); INSERT INTO likes (id, username) VALUES (?, ?)");
 
-      if( $stm->execute(array($id,$author,$title,$description,$genre))){
+      if( $stm->execute(array($id,$author,$title,$description,$genre,$id,$author))){
 ?>
 <html>
     <head>
