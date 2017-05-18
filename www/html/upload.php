@@ -1,7 +1,7 @@
 <?php
   include("session.php");
   if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
-    $id = sha1_file($_FILES['user_file']['tmp_name']);
+    $id = sha1_file($_FILES['user_file']['tmp_name']).".json";
     try {
       if (
           !isset($_FILES['user_file']['error']) ||
